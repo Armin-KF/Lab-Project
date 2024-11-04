@@ -76,7 +76,7 @@ To run this project locally:
 1. Clone the repository and cd into it :
 
     ```bash
-    cd 3d-traffic-light-simulation
+    cd Lab-Project
     ```
 
 2. Open your browser and go to localhost.
