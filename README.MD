@@ -11,10 +11,8 @@ This project is inspired by concepts from Sara Harris's book "Digital Design and
 
 
 ## Demo Video
-<video width="600" controls>
-  <source src="./assets\video\IMG_9970.MP4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+
+ ![Demo](./assets\video\IMG_9970.gif)
 
 ## Table of Contents
 
