@@ -20,7 +20,6 @@ This project is inspired by concepts from Sara Harris's book "Digital Design and
   - [Attribution](#attribution)
   - [Demo Video](#demo-video)
   - [Table of Contents](#table-of-contents)
-  - [Features](#features)
   - [Installation](#installation)
   - [Usage](#usage)
   - [Code Explanation](#code-explanation)
@@ -59,13 +58,6 @@ This project is inspired by concepts from Sara Harris's book "Digital Design and
       - [Function to Update Traffic Lights and Overlay Text](#function-to-update-traffic-lights-and-overlay-text)
       - [Animation Loop](#animation-loop)
 
-## Features
-
-- **Realistic 3D Traffic Lights**: Simulates a working traffic light system.
-- **State Transitions**: Automatically transitions between green, yellow, and red lights with configurable timers.
-- **Interactive Camera**: Use mouse controls to view the scene from different angles.
-- **Responsive**: Adjusts to window size changes.
-- **Visual Overlay**: Displays the current light state and remaining time for each traffic light.
 
 ## Installation
 
