@@ -12,7 +12,7 @@ This project is inspired by concepts from Sara Harris's book "Digital Design and
 
 ## Demo Video
 
- ![Demo](./assets\video\IMG_9970.gif)
+ ![Demo](./assets/video/IMG_9970.gif)
 
 ## Table of Contents
 
