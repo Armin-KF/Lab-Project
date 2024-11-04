@@ -73,14 +73,13 @@ This project is inspired by concepts from Sara Harris's book "Digital Design and
 
 To run this project locally:
 
-1. Clone the repository:
+1. Clone the repository and cd into it :
 
     ```bash
-    git clone https://github.com/your-username/3d-traffic-light-simulation.git
     cd 3d-traffic-light-simulation
     ```
 
-2. Open your browser and go to `http://localhost:3000`.
+2. Open your browser and go to localhost.
 
 ## Usage
 
