@@ -1,4 +1,4 @@
-# 3D Traffic Light Simulation 🚦
+#  Traffic Light Controller Simulation with Verilog 🚦
 
 This project is a simulation of a traffic light controller using **Verilog** for the logic and **Three.js** for the 3D visualization. The traffic light system controls two streets: **Academic Ave** and **Bravado Blvd**, featuring real-time state transitions (green, yellow, and red lights) based on traffic presence. The Verilog module handles the state transitions and timing, while the Three.js visualization provides an interactive 3D representation of the traffic lights, including an overlay to display the current light state with countdown timers.
 
@@ -18,7 +18,7 @@ This project is inspired by concepts from Sara Harris's book "Digital Design and
 
 ## Table of Contents
 
-- [3D Traffic Light Simulation 🚦](#3d-traffic-light-simulation-)
+- [Traffic Light Controller Simulation with Verilog 🚦](#traffic-light-controller-simulation-with-verilog-)
   - [Attribution](#attribution)
   - [Demo Video](#demo-video)
   - [Table of Contents](#table-of-contents)
