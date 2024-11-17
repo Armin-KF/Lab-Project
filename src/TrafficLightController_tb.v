@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-`include "TrafficLightController.v"  // Ensure the TrafficLightController module is included
+`include "TrafficLightController.v"
 
 module TrafficLightController_tb();
 
@@ -11,7 +11,7 @@ module TrafficLightController_tb();
     wire [1:0] LA;               // Output light for Academic Ave
     wire [1:0] LB;               // Output light for Bravado Blvd
 
-    // Instantiate the TrafficLightController module
+    
     TrafficLightController UUT (
         .clk(clk),
         .reset(reset),
@@ -29,11 +29,11 @@ module TrafficLightController_tb();
 
     integer file;
     initial begin
-        // Configure for waveform logging in GTKWave
+        
         $dumpfile("TrafficLightController_tb.vcd");
         $dumpvars(0, TrafficLightController_tb);
 
-        // Open CSV file for writing data
+        
         file = $fopen("traffic_data.csv", "w");
         $fwrite(file, "time,traffic_A,traffic_B,LA,LB\n");
 
