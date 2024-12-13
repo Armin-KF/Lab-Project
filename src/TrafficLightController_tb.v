@@ -1,17 +1,17 @@
 `timescale 1ns / 1ps
-`include "TrafficLightController.v"  // اطمینان از وجود ماژول TrafficLightController
+`include "TrafficLightController.v"
 
 module TrafficLightController_tb();
 
-    // سیگنال‌های ورودی
-    reg clk;                     // سیگنال کلاک
-    reg reset;                   // سیگنال ریست
-    reg traffic_A;               // سیگنال ترافیک از مسیر A
-    reg traffic_B;               // سیگنال ترافیک از مسیر B
-    wire [1:0] LA;               // خروجی چراغ مسیر A
-    wire [1:0] LB;               // خروجی چراغ مسیر B
+    // Input signals
+    reg clk;                     // Clock signal
+    reg reset;                   // Reset signal
+    reg traffic_A;               // Traffic signal from Academic Ave
+    reg traffic_B;               // Traffic signal from Bravado Blvd
+    wire [1:0] LA;               // Output light for Academic Ave
+    wire [1:0] LB;               // Output light for Bravado Blvd
 
-    // نمونه‌ای از ماژول TrafficLightController
+    
     TrafficLightController UUT (
         .clk(clk),
         .reset(reset),
@@ -21,41 +21,50 @@ module TrafficLightController_tb();
         .LB(LB)
     );
 
-    // تولید سیگنال کلاک
+    // Generate clock signal
     initial begin
         clk = 0;
-        forever #5 clk = ~clk; // کلاک با دوره 10 نانوثانیه
+        forever #5 clk = ~clk; // Clock with a period of 10 nanoseconds
     end
 
+    integer file;
     initial begin
-        // پیکربندی برای ثبت سیگنال‌ها در GTKWave
+        
         $dumpfile("TrafficLightController_tb.vcd");
         $dumpvars(0, TrafficLightController_tb);
 
-        // تنظیمات اولیه
-        reset = 1;               // فعال کردن ریست
-        traffic_A = 0;           // ترافیک مسیر A غیرفعال
-        traffic_B = 0;           // ترافیک مسیر B غیرفعال
+        
+        file = $fopen("traffic_data.csv", "w");
+        $fwrite(file, "time,traffic_A,traffic_B,LA,LB\n");
+
+        // Initial settings
+        reset = 1;               // Activate reset
+        traffic_A = 0;           // Deactivate traffic on Academic Ave
+        traffic_B = 0;           // Deactivate traffic on Bravado Blvd
         #10;
 
-        reset = 0;               // غیرفعال کردن ریست
+        reset = 0;               // Deactivate reset
         #10;
 
-        // سناریوی 1: ترافیک در مسیر A وجود دارد
-        traffic_A = 1;           // ترافیک مسیر A فعال
-        #50;                     // انتظار برای تغییر وضعیت چراغ
+        // Scenario 1: Traffic on Academic Ave
+        traffic_A = 1;           // Activate traffic on Academic Ave
+        #50;
+        $fwrite(file, "%0d,%0d,%0d,%0d,%0d\n", $time, traffic_A, traffic_B, LA, LB);
 
-        // سناریوی 2: ترافیک در مسیر B وجود دارد
-        traffic_A = 0;           // غیرفعال کردن ترافیک مسیر A
-        traffic_B = 1;           // فعال کردن ترافیک مسیر B
-        #50;                     // انتظار برای تغییر وضعیت چراغ
+        // Scenario 2: Traffic on Bravado Blvd
+        traffic_A = 0;           // Deactivate traffic on Academic Ave
+        traffic_B = 1;           // Activate traffic on Bravado Blvd
+        #50;
+        $fwrite(file, "%0d,%0d,%0d,%0d,%0d\n", $time, traffic_A, traffic_B, LA, LB);
 
-        // سناریوی 3: هیچ ترافیکی وجود ندارد
-        traffic_B = 0;           // غیرفعال کردن ترافیک مسیر B
-        #50;                     // انتظار برای تغییر وضعیت چراغ
+        // Scenario 3: No traffic
+        traffic_B = 0;           // Deactivate traffic on Bravado Blvd
+        #50;
+        $fwrite(file, "%0d,%0d,%0d,%0d,%0d\n", $time, traffic_A, traffic_B, LA, LB);
 
-        // پایان شبیه‌سازی
+        // End simulation
         #10 $finish;
+        $fclose(file);
     end
 
 endmodule
